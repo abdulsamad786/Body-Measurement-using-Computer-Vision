@@ -225,6 +225,10 @@ def get_wrist(mask):
 def analyze_chessboard(image,affine_correct_flag):
 	clone = image.copy()
 	gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+	#Adding: 'cv2.namedWindow(window_name1)' here.Else it throws Null pointer cv2.error:
+	#*** cv2.error: OpenCV(4.4.0) /private/var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/pip-req-build-ucld1hvm/opencv/modules/highgui/src/window_QT.cpp:717:
+	#error: (-27:Null pointer) NULL window handler in function 'cvSetMouseCallback'
+	cv2.namedWindow(window_name1)
 	cv2.setMouseCallback(window_name1, click_and_crop)
 
 	dst=np.copy(image) # created to ease affine_correct mode
